@@ -1,0 +1,59 @@
+.box {
+  margin: auto;
+  padding: 30px;
+  width: 300px;
+  height: 400px;
+  background-color: #999999;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  //box-shadow: inset 3px 3px darksalmon,inset -3px -3px darksalmon;
+}
+
+.temp {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.key {
+  width: 70px;
+  height: 60px;
+  border-radius: 10%;
+  background-color: #D6D6D6;
+  text-align: center;
+  line-height: 60px;
+  color: #000000;
+  font-size: 2em;
+
+  & :active {
+    background-color: white;
+  }
+}
+
+.operate-key {
+  &:extend(.key);
+  background-color: #F4923E;
+}
+
+#result {
+  height: 60px;
+}
+
+#button {
+  justify-content: flex-end;
+}
+
+#equal {
+  align-self: flex-end;
+  width: 120px;
+  border-radius: 30px;
+}
+
+input {
+  height: 60px;
+  width: 300px;
+  font-size: 30px
+}
