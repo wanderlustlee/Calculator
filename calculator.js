@@ -38,8 +38,6 @@ class calculate {
     };
 
     init() {
-        console.log("init");
-
         const keyArray = [...document.getElementsByClassName("key")];
         const operateKeyArray = [...document.getElementsByClassName("operate-key")];
 
