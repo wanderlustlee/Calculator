@@ -1,8 +1,11 @@
 class calculate {
     displayNode = null;
+    colorStyle = null;
 
     constructor(calculateObj) {
         this.displayNode = calculateObj.displayNode;
+        this.colorStyle = calculateObj.colorStyle;
+
         this.init(calculateObj);
     }
 
@@ -40,16 +43,48 @@ class calculate {
     init() {
         const keyArray = [...document.getElementsByClassName("key")];
         const operateKeyArray = [...document.getElementsByClassName("operate-key")];
-
         const array = [...keyArray, ...operateKeyArray];
+        const havekeyBgColor = this.colorStyle != null && this.colorStyle.keyBgColor !== undefined;
+        const havekeyColor = this.colorStyle != null && this.colorStyle.keyColor !== undefined;
+        const haveOperateKeyBgColor = this.colorStyle != null && this.colorStyle.operateKeyBgColor !== undefined;
+        const haveOperateKeyColor = this.colorStyle != null && this.colorStyle.operateKeyColor !== undefined;
+
         array.forEach((key) => {
             if (key.id === "A/C") {
+                if (havekeyBgColor){
+                    key.style.backgroundColor = this.colorStyle.keyBgColor;
+                }
+                if (havekeyColor){
+                    key.style.color = this.colorStyle.keyColor;
+                }
+
                 key.onclick = this.clearAll;
             } else if (key.id === "equal") {
-                console.log(key.id);
+                if (haveOperateKeyBgColor){
+                    key.style.backgroundColor = this.colorStyle.operateKeyBgColor;
+                }
+                if (haveOperateKeyColor){
+                    key.style.color = this.colorStyle.operateKeyColor;
+                }
+
                 key.onclick = this.calculateFun;
             } else {
-                console.log(key.id);
+                if (key.className === "operate-key") {
+                    if (haveOperateKeyBgColor){
+                        key.style.backgroundColor = this.colorStyle.operateKeyBgColor;
+                    }
+                    if (haveOperateKeyColor){
+                        key.style.color = this.colorStyle.operateKeyColor;
+                    }
+                }else {
+                    if (havekeyBgColor){
+                        key.style.backgroundColor = this.colorStyle.keyBgColor;
+                    }
+                    if (havekeyColor){
+                        key.style.color = this.colorStyle.keyColor;
+                    }
+                }
+
                 key.onclick = () => this.add(key.getAttribute("value"))
             }
         });
