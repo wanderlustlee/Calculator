@@ -32,7 +32,15 @@ class calculate {
             return;
         }
         try {
-            this.displayNode.value = eval(this.displayNode.value);
+            let result = eval(this.displayNode.value);
+            if (isFinite(result)){
+                this.displayNode.value = eval(this.displayNode.value);
+            }else {
+                alert("输入格式有误，请重新输入");
+                this.clearAll();
+                return;
+            }
+
         } catch (e) {
             alert("输入格式有误，请重新输入");
             this.clearAll();
